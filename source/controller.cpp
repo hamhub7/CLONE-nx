@@ -22,6 +22,11 @@ TasController::TasController(uint8_t deviceType, uint8_t bodyR, uint8_t bodyG, u
     state.joysticks[JOYSTICK_LEFT].dy = 0;
     state.joysticks[JOYSTICK_RIGHT].dx = 0;
     state.joysticks[JOYSTICK_RIGHT].dy = 0;
+}
+
+void TasController::attach()
+{
+    if(attachFlag) return;
 
     // Attach the controller
     Result rc = hiddbgAttachHdlsVirtualDevice(&HdlsHandle, &device);
@@ -32,14 +37,20 @@ TasController::TasController(uint8_t deviceType, uint8_t bodyR, uint8_t bodyG, u
     rc = hiddbgSetHdlsState(HdlsHandle, &state);
     if(R_FAILED(rc))
         fatalThrow(rc);
+
+    attachFlag = true;
 }
 
-TasController::~TasController()
+void TasController::detach()
 {
+    if(!attachFlag) return;
+
     // Detatch Controller
     Result rc = hiddbgDetachHdlsVirtualDevice(HdlsHandle);
     if (R_FAILED(rc))
         fatalThrow(rc);
+
+    attachFlag = false;
 }
 
 //This also resets the state of the controller after pressing so only to be used when pairing and not running a script

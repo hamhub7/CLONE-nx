@@ -136,7 +136,7 @@ int main(int argc, char* argv[])
     // Initialization code can go here.
     // Skyline handle
 
-    TasController *controller;
+    TasController *controller = new TasController(HidDeviceType_FullKey3, 0, 0, 0, 0, 0, 0);
 
     // Attach Work Buffer
     rc = hiddbgAttachHdlsWorkBuffer();
@@ -162,34 +162,23 @@ int main(int argc, char* argv[])
 
         if(hidKeyboardDown(KBD_Q))
         {
-            if(controller != NULL)
-            {
-                controller->pressLR();
-            }
+            controller->pressLR();
         }
 
         if(hidKeyboardDown(KBD_W))
         {
-            if(controller != NULL)
-            {
-                controller->pressA();
-            }
+            controller->pressA();
         }
 
         if(hidKeyboardDown(KBD_1))
         {
-            if(controller == NULL)
-            {
-                controller = new TasController(HidDeviceType_FullKey3, 0, 0, 0, 0, 0, 0);
-            }
+
+            controller->attach();
         }
 
         if(hidKeyboardDown(KBD_MINUS))
         {
-            if(controller != NULL)
-            {
-                delete controller;
-            }
+            controller->detach();
         }
 
         svcSleepThread(6250000);

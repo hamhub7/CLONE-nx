@@ -25,6 +25,7 @@ class TasController
     HiddbgHdlsDeviceInfo device = {0};
     HiddbgHdlsState state = {0};
     static char controllerCount;
+    bool attachFlag = false;
 
     public:
 
@@ -33,6 +34,8 @@ class TasController
     ~TasController();
     void pressA();
     void pressLR();
+    void attach();
+    void detach();
 
     void waitForVsync();
     void setInputNextFrame();
