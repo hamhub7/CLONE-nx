@@ -2,10 +2,20 @@
 #include <switch.h>
 #include <cstring>
 #include <string>
-#include "script_provider.hpp"
-#include "script_init.hpp"
+#include <memory>
 
 extern Event vsync_event;
+
+struct controlMsg
+{
+    // Joys between -32768 to 32767
+    int frame;
+    u64 keys;
+    s32 joy_l_x;
+    s32 joy_l_y;
+    s32 joy_r_x;
+    s32 joy_r_y;
+};
 
 class TasController
 {

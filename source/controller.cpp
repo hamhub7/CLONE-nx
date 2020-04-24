@@ -1,7 +1,4 @@
 #include "controller.hpp"
-#include "script_init.hpp"
-#include "script_provider.hpp"
-#include "script_populator.hpp"
 
 TasController::TasController(uint8_t deviceType, uint8_t bodyR, uint8_t bodyG, uint8_t bodyB, uint8_t buttonR, uint8_t buttonG, uint8_t buttonB)
 {
@@ -48,18 +45,23 @@ TasController::~TasController()
 //This also resets the state of the controller after pressing so only to be used when pairing and not running a script
 void TasController::pressA()
 {
-    runScript<PressAProvider>();
+    emptyMsg();
+    state.buttons |= KEY_A;
+    setInputNextFrame();
 }
 
 //This also resets the state of the controller after pressing so only to be used when pairing and not running a script
 void TasController::pressLR()
 {
-    runScript<PressLRProvider>();
+    emptyMsg();
+    state.buttons |= KEY_L;
+    state.buttons |= KEY_R;
+    setInputNextFrame();
 }
 
 void TasController::waitForVsync()
 {
-    Result rc = eventWait(&vsync_event, U64_MAX);
+    Result rc = eventWait(&vsync_event, UINT64_MAX);
     if(R_FAILED(rc))
         fatalThrow(rc);
 }
