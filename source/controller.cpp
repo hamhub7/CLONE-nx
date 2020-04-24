@@ -69,15 +69,9 @@ void TasController::waitForVsync()
 void TasController::setInputNextFrame()
 {
     waitForVsync();
-    setMotion();
     Result rc = hiddbgSetHdlsState(HdlsHandle, &state);
     if(R_FAILED(rc))
         fatalThrow(rc);
-}
-
-void TasController::setMotion()
-{
-    
 }
 
 void TasController::runMsg(std::shared_ptr<struct controlMsg> msg)
