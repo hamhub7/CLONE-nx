@@ -1,7 +1,7 @@
-nx-TAS.elf
-nx-TAS.npdm
-nx-TAS.nso
-nx-TAS.nsp
+CLONE-nx.elf
+CLONE-nx.npdm
+CLONE-nx.nso
+CLONE-nx.nsp
 /build
 .DS_Store
 /release 
