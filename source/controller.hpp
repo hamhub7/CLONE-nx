@@ -25,9 +25,9 @@ class TasController
     HiddbgHdlsDeviceInfo device = {0};
     HiddbgHdlsState state = {0};
     static char controllerCount;
-    bool attachFlag = false;
 
     public:
+    bool attachFlag = false;
 
     TasController(uint8_t deviceType, uint8_t bodyR, uint8_t bodyG, uint8_t bodyB, uint8_t buttonR, uint8_t buttonG, uint8_t buttonB);
     TasController();

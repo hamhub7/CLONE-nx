@@ -181,6 +181,17 @@ int main(int argc, char* argv[])
             controller->detach();
         }
 
+        if(controller->attachFlag)
+        {
+            std::shared_ptr<controlMsg> msg;
+            msg->keys = hidKeysDown(CONTROLLER_P1_AUTO);
+            msg->joy_l_x = 0;
+            msg->joy_l_y = 0;
+            msg->joy_r_x = 0;
+            msg->joy_r_y = 0;
+            controller->runMsg(msg);
+        }
+
         svcSleepThread(6250000);
     }
 
