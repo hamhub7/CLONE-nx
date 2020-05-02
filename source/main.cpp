@@ -17,6 +17,7 @@ Event vsync_event;
 
 // Initialize frame counter variable
 int frameCount = 0;
+TasController *controller;
 
 extern "C"
 {
@@ -102,13 +103,14 @@ void frameIncrement(void* _)
 {
     while(true)
     {
-        // Wait for a new frame...
         Result rc = eventWait(&vsync_event, UINT64_MAX);
         if(R_FAILED(rc))
             fatalThrow(rc);
-
-        // ... Then increment the counter
-        ++frameCount;
+            
+        if(controller->attachFlag)
+        {
+            controller->setInputNextFrame();
+        }
     }
 }
 
@@ -136,24 +138,22 @@ int main(int argc, char* argv[])
     // Initialization code can go here.
     // Skyline handle
 
-    TasController *controller = new TasController(HidDeviceType_FullKey3, 0, 0, 0, 0, 0, 0);
+    controller = new TasController(HidDeviceType_FullKey3, 0, 0, 0, 0, 0, 0);
+    auto msg = std::make_shared<controlMsg>();
 
     // Attach Work Buffer
     rc = hiddbgAttachHdlsWorkBuffer();
     if (R_FAILED(rc))
         fatalThrow(rc);
 
-    // Create new thread for counting frames
-    // Commented out as it was stealing vsync events from the script runner
-    /*
-    Thread countThread;
-    rc = threadCreate(&countThread, frameIncrement, NULL, 0x4000, 49, 3);
-    if(R_FAILED(rc))
-        fatalThrow(rc);
-    rc = threadStart(&countThread);
-    if(R_FAILED(rc))
-        fatalThrow(rc);
-    */
+    // Create new thread for running frames
+    // Thread countThread;
+    // rc = threadCreate(&countThread, frameIncrement, NULL, NULL, 0x4000, 49, 3);
+    // if(R_FAILED(rc))
+    //     fatalThrow(rc);
+    // rc = threadStart(&countThread);
+    // if(R_FAILED(rc))
+    //     fatalThrow(rc);
 
     // Your code / main loop goes here.
     while(true)
@@ -183,13 +183,20 @@ int main(int argc, char* argv[])
 
         if(controller->attachFlag)
         {
-            std::shared_ptr<controlMsg> msg;
-            msg->keys = hidKeysDown(CONTROLLER_P1_AUTO);
-            msg->joy_l_x = 0;
-            msg->joy_l_y = 0;
-            msg->joy_r_x = 0;
-            msg->joy_r_y = 0;
+            msg->keys = hidKeysHeld(CONTROLLER_P1_AUTO);
+            msg->keys &= 65535;
+
+            JoystickPosition pos_left;
+            JoystickPosition pos_right;
+            hidJoystickRead(&pos_left, CONTROLLER_P1_AUTO, JOYSTICK_LEFT);
+            hidJoystickRead(&pos_right, CONTROLLER_P1_AUTO, JOYSTICK_RIGHT);
+            msg->joy_l_x = pos_left.dx;
+            msg->joy_l_y = pos_left.dy;
+            msg->joy_r_x = pos_right.dx;
+            msg->joy_r_y = pos_right.dy;
             controller->runMsg(msg);
+            controller->waitForVsync();
+            controller->setInputNextFrame();
         }
 
         svcSleepThread(6250000);
