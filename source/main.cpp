@@ -146,13 +146,13 @@ int main(int argc, char* argv[])
     {
         hidScanInput();
 
-        if(hidKeysHeld(KEY_SL_RIGHT))
+        if(hidKeyboardDown(KBD_1))
         {   
             controllers.push_back(new TasController(HidDeviceType_FullKey3, 0, 0, 0, 0, 0, 0));
             controllers.back()->attach();
         }
         
-        if(hidKeysHeld(KEY_SR_RIGHT))
+        if(hidKeyboardDown(KBD_MINUS))
         {
             !controllers.empty() && controllers.back()->attachFlag;
             delete controllers.back();
