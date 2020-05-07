@@ -12,12 +12,14 @@
 // Include headers from other parts of the program
 #include "controller.hpp"
 
+using namespace std;
+
 // Create VSync event
 Event vsync_event;
 
 // Initialize frame counter variable
 int frameCount = 0;
-TasController *controller;
+std::vector<TasController*> controllers;
 
 extern "C"
 {
@@ -99,21 +101,6 @@ void __attribute__((weak)) __appExit(void)
     smExit();
 }
 
-void frameIncrement(void* _)
-{
-    while(true)
-    {
-        Result rc = eventWait(&vsync_event, UINT64_MAX);
-        if(R_FAILED(rc))
-            fatalThrow(rc);
-            
-        if(controller->attachFlag)
-        {
-            controller->setInputNextFrame();
-        }
-    }
-}
-
 class file_exception : public std::exception
 {
     virtual const char* what() const throw()
@@ -138,7 +125,6 @@ int main(int argc, char* argv[])
     // Initialization code can go here.
     // Skyline handle
 
-    controller = new TasController(HidDeviceType_FullKey3, 0, 0, 0, 0, 0, 0);
     auto msg = std::make_shared<controlMsg>();
 
     // Attach Work Buffer
@@ -160,28 +146,20 @@ int main(int argc, char* argv[])
     {
         hidScanInput();
 
-        if(hidKeyboardDown(KBD_Q))
+        if(hidKeysHeld(KEY_SL_RIGHT))
+        {   
+            controllers.push_back(new TasController(HidDeviceType_FullKey3, 0, 0, 0, 0, 0, 0));
+            controllers.back()->attach();
+        }
+        
+        if(hidKeysHeld(KEY_SR_RIGHT))
         {
-            controller->pressLR();
+            !controllers.empty() && controllers.back()->attachFlag;
+            delete controllers.back();
+            controllers.pop_back();
         }
 
-        if(hidKeyboardDown(KBD_W))
-        {
-            controller->pressA();
-        }
-
-        if(hidKeyboardDown(KBD_1))
-        {
-
-            controller->attach();
-        }
-
-        if(hidKeyboardDown(KBD_MINUS))
-        {
-            controller->detach();
-        }
-
-        if(controller->attachFlag)
+        if(!controllers.empty() && controllers.back()->attachFlag)
         {
             msg->keys = hidKeysHeld(CONTROLLER_P1_AUTO);
             msg->keys &= 65535;
@@ -194,9 +172,12 @@ int main(int argc, char* argv[])
             msg->joy_l_y = pos_left.dy;
             msg->joy_r_x = pos_right.dx;
             msg->joy_r_y = pos_right.dy;
-            controller->runMsg(msg);
-            controller->waitForVsync();
-            controller->setInputNextFrame();
+        for(long unsigned int i = 0; i < controllers.size(); i++)
+            {   
+                controllers[i]->runMsg(msg);
+                controllers[i]->waitForVsync();
+                controllers[i]->setInputNextFrame();
+            }
         }
 
         svcSleepThread(6250000);
