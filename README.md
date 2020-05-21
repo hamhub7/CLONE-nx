@@ -36,10 +36,10 @@ First of all, you need to have an [Atmosphere-injected Switch](https://switch.ho
 3B. Reboot into cfw
 
 ### Keybinds
-You need to have a USB keyboard attached to your Switch, either via the dock or a USB-A to USB-C adapter in the charging port or wirelessly.
+You need to have a USB keyboard attached to your Switch, either via the dock or a USB-A to USB-C adapter in the charging port or wirelessly. Dont worry it works in handheld too.
 
 #### Controllers
-- `1` = Pro Controller 
+- `1` = Adds a Virtual Pro Controller you can control with player 1 or in handheld mode if thers no player 1. 
 - `-` = Remove the most recently added controller
 
 ## Building from Source
