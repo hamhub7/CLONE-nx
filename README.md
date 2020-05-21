@@ -55,7 +55,7 @@ The `make` process will fail for one of three reasons:
 - Your folder is named something other than `Clone-nx`; solution is to `ln -s Clone-nx.json config.json`
 - Your directory's full path has spaces in it (usually your account name)
 
-##Upcoming Features
+## Upcoming Features
 1. A UI. maybe GUI if possible im still learning.
 2. The ability to change the speed of the virtual controllers.
 3. A axis editor.
