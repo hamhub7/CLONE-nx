@@ -1,61 +1,49 @@
-# nx-TAS
-> Rewrite of [TAS-nx](https://github.com/hamhub7/TAS-nx)
+# Clone-nx
+> Fork of nx-tas (https://github.com/hamhub7/nx-tas)
 
-nx-TAS is fundamentally different than its predecessor, TAS-nx, in that it uses a virtual controller to send inputs instead of changing the inputs of the currently used controller.
+Clone-nx Gives You th ability to control Mpre than one player with a single controller mainly with Super Smash Bros Ultimate in mind but yes you can use thisin any multiplayer game.
 
 ## Support the Creators
 Join our [Discord server](http://discord.gg/qeamCcV)  
 Support me on [Patreon](https://www.patreon.com/aaronhh) or [PayPal](https://www.paypal.me/aaronhamhub)  
 Make a pull request!  
+Support Hamhub7 Clone-nx Is Free!
 
 ## Features
-New features are already planned, such as changing the tye of controller (pro, joycons, sideways joycons, and possibly other controllers), multiple player TAS support, motion controls, some way to combat variable load times and rng (for most games), and color customizaition of the controllers.
+Attaching the amount of controllers you want to control with the number button.
+Detaching controllers when your finish by pressing minus. Nothings is Limited Besides the amount of controllers which is max.
 
 ## Usage
 First of all, you need to have an [Atmosphere-injected Switch](https://switch.homebrew.guide/).
 
 ### Installation
-1. Acquire `nx-TAS.nsp` either from the latest release, or more preferrably build yourself via the instructions below
-2. Create the relevant title directory on your Switch's SD card at `sdmc:/atmosphere/titles/0100000000000cab/` (`sdmc:/atmosphere/contents/0100000000000cab` on Atmosphere versions 0.10.0 or newer)
-3. Place the NSP as `sdmc:/atmosphere/titles/0100000000000cab/exefs.nsp` (`sdmc:/atmosphere/contents/0100000000000cab/exefs.nsp` on Atmosphere versions 0.10.0 or newer)
-4. Create an empty file at `sdmc:/atmosphere/titles/0100000000000cab/flags/boot2.flag` (`sdmc:/atmosphere/contents/0100000000000cab//flags/boot2.flag` on Atmosphere versions 0.10.0 or newer)
-5. Reboot into CFW
+0. If you dont want to do it this way i suggest you do it my way go to 1B.
+1A.Acquire nx-TAS.nsp either from the latest release, or more preferrably build yourself via the instructions below
+2A.Create the relevant title directory on your Switch's SD card at sdmc:/atmosphere/titles/0100000000000cab/ (sdmc:/atmosphere/contents/0100000000000cab on Atmosphere versions 0.10.0 or newer)
+3A.Place the NSP as sdmc:/atmosphere/titles/0100000000000cab/exefs.nsp (sdmc:/atmosphere/contents/0100000000000cab/exefs.nsp on Atmosphere versions 0.10.0 or newer)
+4A.Create an empty file at sdmc:/atmosphere/titles/0100000000000cab/flags/boot2.flag (sdmc:/atmosphere/contents/0100000000000cab//flags/boot2.flag on Atmosphere versions 0.10.0 or newer)
+5A.Reboot into CFW
+
+1B. Go to the latest release at https://github.com/Expertsonicgamer32x/CLONE-nx/releases.
+2B. Copy the atomsphere folder to the root of you sd card.
+3B. Reboot into cfw
 
 ### Keybinds
-You need to have a USB keyboard attached to your Switch, either via the dock or a USB-A to USB-C adapter in the charging port.
+You need to have a USB keyboard attached to your Switch, either via the dock or a USB-A to USB-C adapter in the charging port or wirelessly.
 
 #### Controllers
-- `1` = Pro Controller  
-- `2` = Pair of Joycons (this adds two controllers; exists for ease-of-use)  
-- `3` = Left Joycon  
-- `4` = Right Joycon  
-- `5` = Famicom Controller  
-- `6` = Famicom Controller with mic  
-- `7` = NES Controller  
-- `8` = Unused SNES-style Controller/Pad
+- `1` = Pro Controller 
 - `-` = Remove the most recently added controller
-
-#### Scripts
-- `f1` = `sdmc:/scripts/script1.txt`
-- `f2` = `sdmc:/scripts/script2.txt`
-- ...
-- `f12` = `sdmc:/scripts/script12.txt`
-
-#### Utilities
-- `Q` = Press L+R on the most recently added controller
-- `W` = Press A on the most recently added controller
-- `PAUSE` = Pauses and resumes execution of current script
-- `SCROLLLOCK` = Stops execution of current script
 
 ## Building from Source
 1. [Set up the required libraries](https://switchbrew.org/wiki/Setting_up_Development_Environment)
 2. In the newly installed MSYS2, navigate to the folder you'd like to build this project in, either by opening MSYS in that directory or using the `cd` command to navigate
-3. `git clone https://github.com/hamhub7/nx-TAS.git`
-4. `cd nx-TAS`
+3. `git clone https://github.com/hamhub7/Clone-nx.git`
+4. `cd Clone-nx`
 5. `make`
-6. You should see a file called `nx-TAS.nsp`
+6. You should see a file called `Clone-nx.nsp`
 
 The `make` process will fail for one of three reasons:
 - You cloned a commit that doesn't compile (unlikely)
-- Your folder is named something other than `nx-TAS`; solution is to `ln -s nx-TAS.json config.json`
+- Your folder is named something other than `Clone-nx`; solution is to `ln -s Clone-nx.json config.json`
 - Your directory's full path has spaces in it (usually your account name)
