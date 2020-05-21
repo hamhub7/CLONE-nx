@@ -18,6 +18,7 @@ First of all, you need to have an [Atmosphere-injected Switch](https://switch.ho
 
 ### Installation
 0. If you dont want to do it this way i suggest you do it my way go to 1B.
+
 1A.Acquire nx-TAS.nsp either from the latest release, or more preferrably build yourself via the instructions below
 
 2A.Create the relevant title directory on your Switch's SD card at sdmc:/atmosphere/titles/0100000000000cab/ (sdmc:/atmosphere/contents/0100000000000cab on Atmosphere versions 0.10.0 or newer)
