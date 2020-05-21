@@ -5,7 +5,7 @@ Clone-nx Gives You th ability to control Mpre than one player with a single cont
 
 ## Support the Creators
 Join our [Discord server](http://discord.gg/qeamCcV)  
-Support me on [Patreon](https://www.patreon.com/aaronhh) or [PayPal](https://www.paypal.me/aaronhamhub)  
+Support Hamhub7 on [Patreon](https://www.patreon.com/aaronhh) or [PayPal](https://www.paypal.me/aaronhamhub)  
 Make a pull request!  
 Support Hamhub7 Clone-nx Is Free!
 
