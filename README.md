@@ -29,7 +29,7 @@ First of all, you need to have an [Atmosphere-injected Switch](https://switch.ho
 
 5A. Reboot into CFW
 
-1B. Go to the latest release at https://github.com/Expertsonicgamer32x/CLONE-nx/releases.
+1B. Go to the latest release at https://github.com/Expertsonicgamer32x/CLONE-nx/releases and download the archive.
 
 2B. Copy the atomsphere folder to the root of you sd card.
 
