@@ -70,13 +70,6 @@ void TasController::pressLR()
     setInputNextFrame();
 }
 
-void TasController::waitForVsync()
-{
-    Result rc = eventWait(&vsync_event, UINT64_MAX);
-    if(R_FAILED(rc))
-        fatalThrow(rc);
-}
-
 void TasController::setInputNextFrame()
 {
     Result rc = hiddbgSetHdlsState(HdlsHandle, &state);
