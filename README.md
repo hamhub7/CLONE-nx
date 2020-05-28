@@ -45,7 +45,7 @@ You need to have a USB keyboard attached to your Switch, either via the dock or 
 ## Building from Source
 1. [Set up the required libraries](https://switchbrew.org/wiki/Setting_up_Development_Environment)
 2. In the newly installed MSYS2, navigate to the folder you'd like to build this project in, either by opening MSYS in that directory or using the `cd` command to navigate
-3. `git clone https://github.com/hamhub7/Clone-nx.git`
+3. `git clone https://github.com/Expertsonicgamer32x/CLONE-nx.git`
 4. `cd Clone-nx`
 5. `make`
 6. You should see a file called `Clone-nx.nsp`
