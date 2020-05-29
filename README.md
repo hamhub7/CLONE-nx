@@ -1,7 +1,7 @@
 # Clone-nx
 > Fork of nx-tas (https://github.com/hamhub7/nx-tas)
 
-Clone-nx Gives You th ability to control Mpre than one player with a single controller mainly with Super Smash Bros Ultimate in mind but yes you can use thisin any multiplayer game.
+Clone-nx Gives You th ability to control More than one player with a single controller mainly with Super Smash Bros Ultimate in mind but yes you can use thisin any multiplayer game.
 
 ## Support the Creators
 Join our [Discord server](http://discord.gg/qeamCcV)  
