@@ -43,8 +43,8 @@ If on keyboard
 - `1` = Adds a Virtual Pro Controller you can control with player 1 or in handheld mode if theres no player 1. 
 - `-` = Remove the most recently added controller.
 If on Full Controller(Means no single joy cons)
-- `ZL+L+DpadRight` = Adds a Virtual Pro Controller you can control with player 1 or in handheld mode if theres no player 1. 
-- `ZR+R+DpadUp` = Remove the most recently added controller.
+- `ZL+L+DpadRight+Y` = Adds a Virtual Pro Controller you can control with player 1 or in handheld mode if theres no player 1. 
+- `ZR+R+DpadUp+X` = Remove the most recently added controller.
 
 ## Building from Source
 1. [Set up the required libraries](https://switchbrew.org/wiki/Setting_up_Development_Environment)
