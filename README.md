@@ -63,6 +63,6 @@ The `make` process will fail for one of three reasons:
 1. A UI. maybe GUI if possible im still learning.
 2. The ability to change the speed of the virtual controllers.
 3. A axis editor.
-4. The option to use a controller combination if you dont have access to a keyboard at all times mainly for handheld mode in mind.
+4. The option to use a controller combination if you dont have access to a keyboard at all times mainly for handheld mode in mind.(FINISHED)
 
 
